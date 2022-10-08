@@ -463,7 +463,7 @@ docker exec -it alt-s6-naviserver /bin/bash
 :CUSTOM_ID: ----github--trigger-on-push
 :END:
 #+begin_src sh :shebang ""
-  Trigger:7
+  Trigger:1
 #+end_src
 ** ../.gitignore :code:
 :PROPERTIES:
