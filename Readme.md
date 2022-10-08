@@ -98,7 +98,7 @@ Build image using multi steps  (by means of docker from [oupfiz5/tcl-build](http
     cd alt-s6-naviserver
     docker build -t oupfiz5/alt-s6-naviserver .
 
-Build image using multi steps  (by means of docker from [oupfiz5/tcl-build](https://hub.docker.com/repository/docker/oupfiz5/tcl-build)):
+Build image using multi steps  (by means of docker from [oupfiz5/alt-s6-builder](https://hub.docker.com/repository/docker/oupfiz5/alt-s6-builder)):
 
     docker build -t oupfiz5/alt-s6-naviserver:4.99.24 -f ./Dockerfile .
 

@@ -106,7 +106,7 @@ docker build -t oupfiz5/alt-s6-naviserver:4.99.24 -f ./Dockerfile .
  #+end_src
 
 
-Build image using multi steps  (by means of docker from [[https://hub.docker.com/repository/docker/oupfiz5/tcl-build][oupfiz5/tcl-build]]):
+Build image using multi steps  (by means of docker from [[https://hub.docker.com/repository/docker/oupfiz5/alt-s6-builder][oupfiz5/alt-s6-builder]]):
 #+begin_src sh :tangle no :noweb yes
 docker build -t oupfiz5/alt-s6-naviserver:4.99.24 -f ./Dockerfile .
 #+end_src
@@ -1270,7 +1270,7 @@ load '.bats-battery/bats-support/load.bash'
 :END:
 #+begin_src sh :results output pp :noweb strip-export :tangle no
   set -e
-  IMAGE_NAME="${1:-oupfiz5/tcl-build:latest}"
+  IMAGE_NAME="${1:-oupfiz5/alt-s6-builder:22.09}"
 
   # * Install dockle and check targets
   # Pay attention: some checks are ignored using .dockleignore
