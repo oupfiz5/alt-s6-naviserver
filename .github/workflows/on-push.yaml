@@ -1,0 +1,54 @@
+name: Build and push docker images
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - '.github/workflows/*'
+      - '.github/*'
+      - 'src/Dockerfile*'
+      - 'src/rootfs/**'
+      - 'src/hook/*'
+      - 'src/*.sh'
+      - 'src/VERSIONS'
+      - 'tests/**'
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - '.github/workflows/*'
+      - '.github/*'
+      - 'src/Dockerfile'
+      - 'src/rootfs/**'
+      - 'src/hook/*'
+      - 'src/*.sh'
+      - 'tests/**'
+      - 'src/VERSIONS'
+jobs:
+  build:
+    name: Build and push image to dockerhub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo checkout
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub Registry
+        run: |
+          echo  ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: s6v3. Naviserver. Build and push image.
+        run: |
+          echo "::group::Prepare environment"
+          set -a; source ${GITHUB_WORKSPACE}/src/VERSIONS ; set +a;
+          export IMAGE_TAG="${BASE_IMAGE_TAG}-${NS_IMAGE_TAG}"
+          cd ${GITHUB_WORKSPACE}/src/hook
+          echo "::endgroup::"
+          echo "::group::Build image"
+          ./build.sh
+          echo "::endgroup::"
+          echo "::group::Push image"
+          ./push.sh
+          echo "::endgroup::"
