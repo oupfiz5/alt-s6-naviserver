@@ -1,3 +1,4 @@
+
 # Table of Contents
 
 -   [About](#about)
@@ -298,7 +299,7 @@ The default configuration file is `rootfs/usr/local/ns/conf/nsd-config.tcl`.  Fo
 1.  Create own configuration file with name `nsd-config.tcl`
 2.  Put it to some directory (for example `rootfs/usr/local/ns/conf/test`)
 3.  Mount the the directory from item 2 as `/usr/local/ns/conf`
-
+    
         docker run -itd \
                --restart always \
                --name=alt-s6-naviserver  \
@@ -357,3 +358,4 @@ For debugging and maintenance purposes you may want access the output log. If yo
 For debugging and maintenance purposes you may want access the containers shell. If you are using Docker version 1.3.0 or higher you can access a running containers shell by starting bash using docker exec:
 
     docker exec -it alt-s6-naviserver /bin/bash
+
